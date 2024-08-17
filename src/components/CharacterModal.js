@@ -1,11 +1,12 @@
-// src/components/CharacterModal.js
 import React from 'react';
 import Modal from 'react-modal';
 
-const CharacterModal = ({ character, closeModal }) => {
+Modal.setAppElement('#root');
+
+const CharacterModal = ({ character, closeModal, isOpen }) => {
   return (
-    <Modal isOpen={!!character} onRequestClose={closeModal}>
-      <button onClick={closeModal}>Close</button>
+    <Modal isOpen={isOpen} onRequestClose={closeModal} className="character-modal" overlayClassName="character-modal-overlay">
+      <button onClick={closeModal} className="modal-close-button">Close</button>
       {character && (
         <div>
           <h2>{character.name}</h2>
@@ -16,6 +17,7 @@ const CharacterModal = ({ character, closeModal }) => {
           <p>Eye Color: {character.eye_color}</p>
           <p>Birth Year: {character.birth_year}</p>
           <p>Gender: {character.gender}</p>
+          <p>Species: {character.species}</p>
         </div>
       )}
     </Modal>
@@ -23,3 +25,4 @@ const CharacterModal = ({ character, closeModal }) => {
 };
 
 export default CharacterModal;
+
